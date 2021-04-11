@@ -9,17 +9,13 @@
         <v-btn text>For Enterprise</v-btn>
         <v-menu offset-y>
           <template v-slot:activator="{on}">
-            <v-btn v-on="on" text>Support</v-btn>
+            <v-btn v-on="on" text>Support<v-icon>mdi-menu-down</v-icon></v-btn>
           </template>
           <v-list>
-            <v-list-item>
+            <v-subheader>Get help</v-subheader>
+            <v-list-item v-for="support in supports" :key="support">
               <v-list-item-content>
-                <v-list-item-title>Consulting and support</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-content>
-                <v-list-item-title>Discord community</v-list-item-title>
+                <v-list-item-title>{{ support }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list>
@@ -36,7 +32,14 @@
 export default {
   data () {
     return {
-      drawer: null
+      drawer: null,
+      supports: [
+        { name: 'Consulting and support', icon: 'mdi-vuetify' },
+        { name: 'Discord community', icon: 'mdi-discord' },
+        { name: 'Report a bug', icon: 'mdi-bug' },
+        { name: 'Github issue board', icon: 'mdi-github' },
+        { name: 'Stack overview', icon: 'mdi-stack-oveflow' }
+      ]
     }
   }
 }
